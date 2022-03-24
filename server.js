@@ -26,7 +26,7 @@ app.use('/js',express.static(path.resolve(__dirname,"asset/js")));
 
 
 app.get('/',(req,res)=>{
-    res.send(`server Started`);
+    res.render('index');
 });
 
 app.listen(PORT,()=>{console.log(`server is Running at http://localhost:${PORT}`)});
