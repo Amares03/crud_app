@@ -148,7 +148,7 @@ td{
     position: absolute;
     opacity: 0;
 }
-.radio input[type="radio"] + .radio-lable:before{
+.radio input[type="radio"] +.radio-lable:before{
     content: "";
     background: var(--border-btn);
     border-radius: 100%;
