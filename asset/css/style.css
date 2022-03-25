@@ -111,3 +111,17 @@ td{
         position: relative;
     }
 }
+
+
+/* add user and update style */
+
+.form-title{
+    margin-top: 2em;
+}
+.form-title>h2{
+    padding: 5em 0;
+}
+.new_user{
+    max-width: 786px;
+    margin: auto;
+}
