@@ -26,32 +26,30 @@ router.get('/update-user',services.updateUserRout);
 
 
 // API
-router.post('/api/users',(req,res)=>{
-    if(!req.body){
-        res.status(400).send({message:"content cannot be empity"});
-        return;
-    }
-
-    // new user
-    const user = new Userdb({
-        name:req.body.name,
-        email:req.body.email,
-        gender:req.body.gender,
-        status:req.body.status
-    });
-
-    // save the user in the database
-    user
-    .save(user)
-    .then(data =>{
-        res.send(data);
+router.post('/api/users',controller.create);
+router.get('/api/users',(req,res)=>{
+    Userdb.find()
+    .then(user =>{
+        res.send(user);
     })
     .catch(err =>{
-        res.status(500).send({message:err.message || "Some Error Ocured While Creating User"});
+        res.status(500).send({message:err.message || "Error Ocurd While Finding data"});
     });
 });
-// router.get('/api/users',controller.find);
-// router.put('/api/users',controller.update);
+router.put('/api/users/:id',(req,res)=>{
+    if(!req.body){
+        return res.status(400).send({message:"Update Cannot be empity"});
+    }
+    const id = req.params.id;
+    Userdb.findById(id)
+    .then(user =>{
+        res.send(user);
+    })
+    .catch(err =>{
+        res.status(500).send({message:err.message || "User Not Find"});
+    });
+
+});
 // router.delete('/api/users',controller.delete);
 
 module.exports = router;
